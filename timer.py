@@ -7,6 +7,7 @@
 
 from time import sleep
 from gpiozero import LED, PWMLED
+from math import sin, pi
 
 def contagem_regressiva(time_seconds):
     while time_seconds > 0:
@@ -33,6 +34,7 @@ while not input_success:
 
 contagem_regressiva(time_seconds)
 my_led = PWMLED(18)
+x = 0
 while True:
     # my_led.on()
     # sleep(0.5)
@@ -40,10 +42,11 @@ while True:
     # sleep(0.5)
 
     # implementing PWM
-    my_led.value = 0
+    my_led.value = sin(x)
     sleep(0.5)
-    my_led.value = 0.5
-    sleep(0.5)
-    my_led.value = 1
-    sleep(0.5)
+    if x == 2 * pi:
+        x = 0
+    else:
+        x += 0.01
+
 
