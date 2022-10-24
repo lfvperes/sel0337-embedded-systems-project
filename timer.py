@@ -42,11 +42,11 @@ while True:
     # sleep(0.5)
 
     # implementing PWM
-    my_led.value = sin(x)
-    sleep(0.5)
-    if x == 2 * pi:
+    my_led.value = (sin(x) + 1) / 2
+    sleep(0.1)
+    if x >= 2 * pi:
         x = 0
     else:
-        x += 0.01
+        x += 0.05
 
 
