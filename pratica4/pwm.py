@@ -4,6 +4,7 @@
 # 
 # CAMILA HIROMI TANAKA 10748201
 # LUIS FILIPE VASCONCELOS PERES 10310641
+# github.com/lfvperes/sel0337-embedded-systems-project
 
 # importa as bibliotecas que serao usadas
 from time import sleep

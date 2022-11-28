@@ -4,6 +4,7 @@
 # 
 # CAMILA HIROMI TANAKA 10748201
 # LUIS FILIPE VASCONCELOS PERES 10310641
+# github.com/lfvperes/sel0337-embedded-systems-project
 
 import threading as th
 import RPi.GPIO as GPIO
