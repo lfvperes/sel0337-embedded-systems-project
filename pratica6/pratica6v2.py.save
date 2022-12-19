@@ -1,0 +1,6 @@
+#pratica6
+
+mport 
+ requests, json, pprint
+
+station_ID = 966583
