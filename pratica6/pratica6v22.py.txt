@@ -1,0 +1,47 @@
+#Pratica6 - Camila e Luis
+
+#Importando pacotes
+from picamera import PiCamera, Color
+from time import sleep
+from requests import get
+import json
+from pprint import pprint
+
+# Obtendo os dados do clima tempo temperatura dada e assinatura 
+url = 'https://apex.oracle.com/pls/apex/raspberrypi/weatherstation/getlatestmeasurements/966583'
+
+weather = get(url).json()['items']
+temperatura = weather[0]["ambient_temp"]
+data = weather[0]["created_on"]
+created = weather[0]["created_by"]
+
+# Camera da Rasp
+camera = PiCamera()
+
+# Configuracoes para a camera incluindo effect e resolution
+camera.resolution = (1920, 1080)
+camera.annotate_text_size = 50
+camera.framerate = 15
+effect = 'watercolor'
+camera.image_effect = effect
+camera.annotate_background = Color('yellow')
+camera.annotate_foreground = Color('green')
+camera.annotate_text = f"Camila 10748201 e Luis 10310641 \nTemperatura: {temperatura} \nData: {data} \nCriado por: {created}"
+
+# Tirando foto com efeito watercolor e texto com nossos nomes
+camera.start_preview()
+sleep(5)
+camera.capture('/home/sel/sel0337-embedded-systems-project/pratica6/camera.jpg')
+camera.stop_preview()
+
+# Gravando video com a camera
+camera.annotate_background = None
+camera.annotate_text = "Camila 10748201 e Luis 10310641"
+
+# Condiguracoes para gravacao como inicializacao preview e parada depois de 5 segundos
+camera.start_preview()
+camera.start_recording('/home/sel/sel0337-embedded-systems-project/pratica6/videox.h264')
+sleep(5)
+camera.stop_recording()
+camera.stop_preview()
+
