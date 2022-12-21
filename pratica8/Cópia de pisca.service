@@ -1,0 +1,8 @@
+[Unit]
+Description= Blink LED
+After=multi-user.target
+[Service]
+ExecStart=/home/sel/pisca.sh
+user=SEL
+[Install]
+WantedBy=multi-user.target
